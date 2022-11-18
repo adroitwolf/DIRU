@@ -57,7 +57,7 @@
   </div>
 </template>
 <script>
-import payApi from '@/api/image'
+import imageApi from '@/api/image'
 export default {
   data() {
     return {
@@ -78,12 +78,24 @@ export default {
     handleRemove(file, fileList){
       this.src = '';
       this.image_src = ''
+      this.res_src = ''
     },
+    //  根据下面的fuction改写成你们想要的
     handleUpload1(){
       // 这里写需要上传的api
-      payApi.fuc1(this.src).then(response=>{
-        
+      imageApi.fuc1(this.src).then(response=>{
+          const blob = new Blob([response.data])
+          // this.res_src = URL.createObjectURL(blob);
+          const link = document.createElement('a')
+          link.download = file_name // a标签添加属性
+          link.style.display = 'none'
+          link.href = URL.createObjectURL(blob)
+          document.body.appendChild(link)
+          link.click() // 执行下载
+          URL.revokeObjectURL(link.href)  // 释放 bolb 对象
+          document.body.removeChild(link) // 下载完成移除元素
       })
+      console.log(this.res_src)
     }
   }
 }

@@ -6,7 +6,7 @@ imageApi.fuc1 = (file)=>{
     const formData = new FormData();
     formData.append("file", file);
     return service({
-        url: `${baseUrl}/uploadFile`,
+        url: `/func1`,
         headers: {
             'Content-Type': 'multipart/form-data'
         },
@@ -16,4 +16,4 @@ imageApi.fuc1 = (file)=>{
     })
 }
 
-export default payApi
+export default imageApi

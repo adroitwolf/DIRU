@@ -11,8 +11,8 @@ imageApi.fuc1 = (file)=>{
             'Content-Type': 'multipart/form-data'
         },
         data: formData,
-        method: 'post'
-
+        method: 'post',
+        responseType: 'blob'
     })
 }
 

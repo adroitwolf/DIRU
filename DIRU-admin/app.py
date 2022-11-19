@@ -1,12 +1,11 @@
 from flask import Flask,Response
 from flask import request
 from flask_cors import *
-from flask import jsonify
 from flask import send_file
 import os
 import io
 
-basedir = os.path.abspath(os.path.dirname(__file__)) + '/imgs/'
+basedir = os.path.abspath(os.path.dirname(__file__)) + '/static/'
 app = Flask(__name__)
 CORS(app,supports_credentials=True)
 

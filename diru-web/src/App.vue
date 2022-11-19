@@ -84,16 +84,9 @@ export default {
     handleUpload1(){
       // 这里写需要上传的api
       imageApi.fuc1(this.src).then(response=>{
-          const blob = new Blob([response.data])
-          // this.res_src = URL.createObjectURL(blob);
-          const link = document.createElement('a')
-          link.download = file_name // a标签添加属性
-          link.style.display = 'none'
-          link.href = URL.createObjectURL(blob)
-          document.body.appendChild(link)
-          link.click() // 执行下载
-          URL.revokeObjectURL(link.href)  // 释放 bolb 对象
-          document.body.removeChild(link) // 下载完成移除元素
+        console.log(response)
+        this.res_src = URL.createObjectURL(response.data)
+        
       })
       console.log(this.res_src)
     }
